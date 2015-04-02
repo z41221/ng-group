@@ -114,6 +114,20 @@
       });
 
       groupPool.newGen();
+      
+       function compare(prevGroup, nextGroup) {
+          if (typeof prevGroup[groupField] == "string") {
+              return (prevGroup[groupField].toLowerCase() < nextGroup[groupField].toLowerCase() ? -1 : 1);
+          }
+          else if (typeof prevGroup[groupField] == "number") {
+              return (prevGroup[groupField] < nextGroup[groupField] ? -1 : 1);
+          }
+          else {
+              return 0;
+          }          
+      }
+
+      filtered.sort(compare);
 
       return filtered;
     };
